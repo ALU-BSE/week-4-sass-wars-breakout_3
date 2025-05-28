@@ -1,7 +1,7 @@
-@use '_variables.scss' as *;
-@use '_functions.scss' as *;
+@use '_variables' as *;
+@use '_functions' as *;
 @use "sass:map";
-@use "sass:color";
+@use "sass:list";
 
 @mixin flex-center {
   display: flex;
@@ -15,22 +15,67 @@
   align-items: center;
 }
 
-@mixin transition($prop...) {
-  transition: $prop;
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
-@mixin button-style($bg, $color) {
-  background-color: $bg;
+@mixin transition($properties...) {
+  @if list.length($properties) == 0 {
+    transition: $transition-base;
+  } @else {
+    transition: $properties;
+  }
+}
+
+@mixin button-style($bg-color, $text-color: null) {
+  $color: if($text-color, $text-color, contrast-color($bg-color));
+  
+  background-color: $bg-color;
   color: $color;
-  border: none;
-  padding: spacing(sm) spacing(md);
-  border-radius: $border-radius;
+  border: $btn-border-width solid transparent;
+  padding: spacing('sm') spacing('md');
+  border-radius: $btn-border-radius;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
   cursor: pointer;
-  @include transition($transition-slow);
+  text-decoration: none;
+  display: inline-block;
+  @include transition($btn-transition);
 
   &:hover {
-    background-color: color.scale($bg, $lightness: -10%);
+    background-color: darken-color($bg-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.5rem alpha-color($bg-color, 0.3);
   }
+
+  &:active {
+    background-color: darken-color($bg-color, 15%);
+    transform: translateY(0);
+  }
+}
+
+@mixin button-outline($border-color, $text-color: $border-color) {
+  background-color: transparent;
+  color: $text-color;
+  border: $btn-border-width solid $border-color;
+  padding: spacing('sm') spacing('md');
+  border-radius: $btn-border-radius;
+  font-weight: $btn-font-weight;
+  cursor: pointer;
+  @include transition($btn-transition);
+
+  &:hover {
+    background-color: $border-color;
+    color: contrast-color($border-color);
+    transform: translateY(-2px);
+  }
+}
+
+@mixin dropdown-show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 @mixin dropdown-animation {
@@ -39,22 +84,68 @@
   transform: translateY(-10px);
   @include transition($transition-base);
 
-  &:hover {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  &.show,
+  .dropdown:hover & {
+    @include dropdown-show;
   }
 }
 
 @mixin respond-to($breakpoint) {
   $breakpoints: (
-    sm: 480px,
-    md: 768px,
-    lg: 1024px,
-    xl: 1280px
+    xs: $breakpoint-xs,
+    sm: $breakpoint-sm,
+    md: $breakpoint-md,
+    lg: $breakpoint-lg,
+    xl: $breakpoint-xl,
+    xxl: $breakpoint-xxl
   );
 
-  @media (max-width: map.get($breakpoints, $breakpoint)) {
-    @content;
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+@mixin respond-above($breakpoint) {
+  $breakpoints: (
+    xs: $breakpoint-xs,
+    sm: $breakpoint-sm,
+    md: $breakpoint-md,
+    lg: $breakpoint-lg,
+    xl: $breakpoint-xl,
+    xxl: $breakpoint-xxl
+  );
+
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint) + 1px) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+@mixin gradient-background($start-color, $end-color, $direction: 135deg) {
+  background: linear-gradient($direction, $start-color, $end-color);
+}
+
+@mixin text-gradient($start-color, $end-color, $direction: 45deg) {
+  background: linear-gradient($direction, $start-color, $end-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@mixin hover-lift($lift-amount: 2px, $shadow-color: null) {
+  @include transition(transform 0.3s ease, box-shadow 0.3s ease);
+  
+  &:hover {
+    transform: translateY(-$lift-amount);
+    @if $shadow-color {
+      box-shadow: 0 ($lift-amount * 2) ($lift-amount * 4) alpha-color($shadow-color, 0.2);
+    }
   }
 }

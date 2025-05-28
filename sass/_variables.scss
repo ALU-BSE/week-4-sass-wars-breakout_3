@@ -35,9 +35,9 @@ $btn-secondary: $text-secondary;
 $btn-secondary-hover: color.scale($text-secondary, $lightness: 10%);
 $btn-secondary-active: color.scale($text-secondary, $lightness: -5%);
 
-$btn-danger: $light-color;
-$btn-danger-hover: color.scale($light-color, $lightness: -10%);
-$btn-danger-active: color.scale($light-color, $lightness: -15%);
+$btn-danger: $danger-color;
+$btn-danger-hover: color.scale($danger-color, $lightness: -10%);
+$btn-danger-active: color.scale($danger-color, $lightness: -15%);
 
 $btn-success: $success-color;
 $btn-warning: $warning-color;
@@ -88,13 +88,6 @@ $spacings: (
   '3xl': $spacer * 4      // 64px
 );
 
-// Specific spacing for components
-$navbar-padding-y: spacing('md');
-$navbar-padding-x: spacing('lg');
-$btn-padding-y: spacing('sm');
-$btn-padding-x: spacing('md');
-$dropdown-padding: spacing('sm');
-
 // ===================================
 // RESPONSIVE BREAKPOINTS
 // ===================================
@@ -111,13 +104,8 @@ $breakpoint-xxl: 1400px;
 
 // Navigation
 $navbar-height: 60px;
-$navbar-brand-font-size: font-size('xl');
-$navbar-nav-link-padding-x: spacing('md');
-$navbar-toggler-padding: spacing('sm');
-
 // Dropdown
 $dropdown-min-width: 200px;
-$dropdown-padding-y: spacing('sm');
 $dropdown-spacer: 2px;
 $dropdown-border-radius: 0.375rem;
 $dropdown-box-shadow: 0 0.5rem 1rem alpha-color($text-dark, 0.15);

@@ -1,5 +1,6 @@
-@use '_variables.scss' as *;
 @use "sass:map";
+@use "sass:color";
+@use "_variables" as *;
 
 @function spacing($size) {
   @return map.get($spacings, $size);
@@ -11,4 +12,24 @@
 
 @function alpha-color($color, $alpha) {
   @return rgba($color, $alpha);
+}
+
+@function theme-color($key) {
+  @return map.get($theme-colors, $key);
+}
+
+@function lighten-color($color, $percentage) {
+  @return color.scale($color, $lightness: $percentage);
+}
+
+@function darken-color($color, $percentage) {
+  @return color.scale($color, $lightness: -$percentage);
+}
+
+@function contrast-color($background) {
+  @if (color.channel($background, "lightness", $space: hsl) > 50%) {
+    @return $text-dark;
+  } @else {
+    @return $text-light;
+  }
 }
