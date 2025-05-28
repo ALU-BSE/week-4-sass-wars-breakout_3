@@ -1,0 +1,31 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($prop...) {
+  transition: $prop 0.3s ease-in-out;
+}
+
+@mixin button-style($bg, $color) {
+  background-color: $bg;
+  color: $color;
+  border: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: 5px;
+  cursor: pointer;
+  @include transition(all);
+  
+  &:hover {
+    background-color: darken($bg, 10%);
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+}
