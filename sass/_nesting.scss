@@ -98,7 +98,9 @@
   }
   
   .buttons {
-    @include flex-center;
-    gap: spacing('sm');
+    @include button-style($primary-color, $white) {
+      @include flex-center;
+      gap: spacing('sm');
+    }
   }
 }
