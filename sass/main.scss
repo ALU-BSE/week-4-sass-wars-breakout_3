@@ -1,5 +1,10 @@
+// Main SCSS file for the Navbar component
+// This file involves the nesting of styles for the Navbar component,
+// including mixins, variables, and functions.
+
 @import '_mixins.scss';
 @import '_variables.scss';
+@import '_functions.scss';
 
 .navbar {
   background-color: $white;
@@ -17,7 +22,7 @@
   }
   
   .logo {
-    font-family: $font-family-heading;
+    font-family: $font-family-primary;
     font-size: font-size('2xl');
     font-weight: $font-weight-bold;
     color: $primary-color;
@@ -43,13 +48,13 @@
       position: relative;
       
       > a {
-        color: $gray-800;
+        color: $text-secondary;
         text-decoration: none;
         font-weight: $font-weight-medium;
         padding: spacing('sm') spacing('md');
         border-radius: $border-radius-sm;
 
-        @include transition(all $transition-normal);
+        @include transition(all);
         
         &:hover {
           color: $primary-color;
@@ -60,27 +65,26 @@
       // Dropdown styles
       &.dropdown {
         .dropdown-menu {
+          @include dropdown-animation;
           position: absolute;
+          background-color: $white;
+          min-width: 200px;
+          border-radius: $border-radius;
+          box-shadow: $shadow-lg;
+          padding: spacing('sm') 0;
           top: 100%;
           left: 0;
-          background-color: $white;
-          box-shadow: $shadow-lg;
-          border-radius: $border-radius-md;
-          padding: spacing('sm') 0;
-          min-width: 200px;
           list-style: none;
-          @include dropdown-animation;
           
           li {
             a {
               display: block;
               padding: spacing('sm') spacing('md');
-              color: $gray-800;
+              color: $text-secondary;
               text-decoration: none;
-              transition: all $transition-fast;
-              
+              @include transition($transition-fast);
               &:hover {
-                background-color: $gray-100;
+                background-color: $background-color;
                 color: $primary-color;
               }
             }

@@ -11,7 +11,7 @@
 }
 
 @mixin transition($prop...) {
-  transition: $prop 0.3s ease-in-out;
+  transition: $prop;
 }
 
 @mixin button-style($bg, $color) {
@@ -21,7 +21,7 @@
   padding: spacing(sm) spacing(md);
   border-radius: 5px;
   cursor: pointer;
-  @include transition(all);
+  @include transition($transition-slow);
 
   &:hover {
     background-color: darken($bg, 10%);
@@ -32,7 +32,7 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: all $transition-normal;
+  @include transition($transition-base);
 
   &:hover {
     opacity: 1;

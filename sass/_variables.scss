@@ -1,18 +1,12 @@
-// ===================================
-// SASS VARIABLES - STYLE WARS CHALLENGE
-// Variable Master: Complete Color & Design System
-// ===================================
+// ================= COLOR SYSTEM =================
+$primary-color: #2c3e50;       // Primary - Deep blue/navy
+$accent-color: #3498db;        // Accent - Light blue
+$light-color: #ecf0f1;         // Light - Light gray
+$danger-color: #e74c3c;        // Danger - red
+$secondary-color: #34495e;     // Secondary - Dark blue-gray
 
 // ===================================
-// REQUIRED COLOR PALETTE (From Design Guide)
-// ===================================
-$primary-color: #2c3e50;      // Primary - Deep blue/navy
-$accent-color: #3498db;       // Accent - Light blue  
-$light-color: #e74c3c;       // Light - Red/coral
-$danger-secondary: #34495e;   // Danger/Secondary - Dark blue-gray
-
-// ===================================
-// EXTENDED COLOR SYSTEM (5+ colors required)
+// EXTENDED COLOR SYSTEM
 // ===================================
 $success-color: #27ae60;     // Green for success states
 $warning-color: #f39c12;     // Orange for warnings
@@ -63,7 +57,7 @@ $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// Typography Scale (Mobile-first approach)
+// Typography Scale
 $font-size-xs: 0.75rem;    // 12px
 $font-size-sm: 0.875rem;   // 14px
 $font-size-base: 1rem;     // 16px
@@ -166,8 +160,9 @@ $theme-colors: (
   'success': $success-color,
   'info': $info-color,
   'warning': $warning-color,
-  'danger': $light-color,
-  'light': $background-color,
+  'danger': $danger-color,
+  'light': $light-color,
+  'background': $background-color,
   'dark': $primary-color
 );
 
@@ -178,3 +173,7 @@ $enable-gradients: true;
 $enable-shadows: true;
 $enable-rounded: true;
 $enable-transitions: true;
+
+
+$shadow-sm: 0 2px 4px rgba($black, 0.1);
+$shadow-lg: 0 4px 6px rgba($black, 0.1);
