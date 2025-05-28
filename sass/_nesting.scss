@@ -1,0 +1,104 @@
+.navbar {
+  background-color: $white;
+  box-shadow: $shadow-sm;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  @include flex-between;
+  padding-top: spacing('md');
+  padding-bottom: spacing('md');
+  
+  @include respond-to('md') {
+    padding-top: spacing('lg');
+    padding-bottom: spacing('lg');
+  }
+  
+  .logo {
+    font-family: $font-family-heading;
+    font-size: font-size('2xl');
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    margin: 0;
+    
+    @include respond-to('md') {
+      font-size: font-size('3xl');
+    }
+  }
+  
+  nav {
+    @include flex-between;
+    gap: spacing('xl');
+  }
+  
+  .nav-links {
+    @include flex-center;
+    list-style: none;
+    gap: spacing('lg');
+    margin: 0;
+    
+    li {
+      position: relative;
+      
+      > a {
+        color: $gray-800;
+        text-decoration: none;
+        font-weight: $font-weight-medium;
+        padding: spacing('sm') spacing('md');
+        border-radius: $border-radius-sm;
+        transition: all $transition-normal;
+        
+        &:hover {
+          color: $primary-color;
+          background-color: alpha-color($primary-color, 0.1);
+        }
+      }
+      
+      // Dropdown styles
+      &.dropdown {
+        .dropdown-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: $white;
+          box-shadow: $shadow-lg;
+          border-radius: $border-radius-md;
+          padding: spacing('sm') 0;
+          min-width: 200px;
+          list-style: none;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all $transition-normal;
+          
+          li {
+            a {
+              display: block;
+              padding: spacing('sm') spacing('md');
+              color: $gray-800;
+              text-decoration: none;
+              transition: all $transition-fast;
+              
+              &:hover {
+                background-color: $gray-100;
+                color: $primary-color;
+              }
+            }
+          }
+        }
+        
+        &:hover {
+          .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+        }
+      }
+    }
+  }
+  
+  .buttons {
+    @include flex-center;
+    gap: spacing('sm');
+  }
+}
