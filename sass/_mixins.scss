@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @mixin transition($prop...) {
   transition: $prop 0.3s ease-in-out;
 }
@@ -12,20 +18,38 @@
   background-color: $bg;
   color: $color;
   border: none;
-  padding: $spacing-sm $spacing-md;
+  padding: spacing(sm) spacing(md);
   border-radius: 5px;
   cursor: pointer;
   @include transition(all);
-  
+
   &:hover {
     background-color: darken($bg, 10%);
   }
 }
 
+@mixin dropdown-animation {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all $transition-normal;
+
+  &:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == mobile {
-    @media (max-width: 768px) {
-      @content;
-    }
+  $breakpoints: (
+    sm: 480px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px
+  );
+
+  @media (max-width: map-get($breakpoints, $breakpoint)) {
+    @content;
   }
 }
