@@ -1,3 +1,6 @@
+@import '_mixins.scss';
+@import '_variables.scss';
+
 .navbar {
   background-color: $white;
   box-shadow: $shadow-sm;
@@ -45,7 +48,8 @@
         font-weight: $font-weight-medium;
         padding: spacing('sm') spacing('md');
         border-radius: $border-radius-sm;
-        transition: all $transition-normal;
+
+        @include transition(all $transition-normal);
         
         &:hover {
           color: $primary-color;
@@ -65,10 +69,7 @@
           padding: spacing('sm') 0;
           min-width: 200px;
           list-style: none;
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(-10px);
-          transition: all $transition-normal;
+          @include dropdown-animation;
           
           li {
             a {
@@ -83,14 +84,6 @@
                 color: $primary-color;
               }
             }
-          }
-        }
-        
-        &:hover {
-          .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
           }
         }
       }
