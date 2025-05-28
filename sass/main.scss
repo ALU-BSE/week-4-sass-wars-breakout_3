@@ -88,16 +88,9 @@ body {
       position: relative;
 
       > a {
-        color: $light-color;
-        text-decoration: none;
-        font-weight: $font-weight-medium;
-        padding: spacing('sm') spacing('md');
-        border-radius: $border-radius-sm;
+        @extend %nav-link;
         @include transition($transition-base);
-        
         &:hover {
-          color: $secondary-color;
-          background-color: alpha-color($light-color, 0.9);
           @include hover-lift(5px, $accent-color);
         }
       }
@@ -109,17 +102,8 @@ body {
         }
 
         .dropdown-menu {
+          @extend %dropdown-base;
           @include dropdown-animation;
-          position: absolute;
-          background-color: $text-light;
-          min-width: $dropdown-min-width;
-          border-radius: $dropdown-border-radius;
-          box-shadow: $dropdown-box-shadow;
-          padding: spacing('sm') 0;
-          top: 100%;
-          left: 0;
-          list-style: none;
-          border: 1px solid alpha-color($accent-color, 0.1);
           
           @include respond-to(md) {
             position: static;
@@ -127,26 +111,17 @@ body {
             margin-top: spacing('sm');
             box-shadow: none;
             background-color: alpha-color($text-light, 0.75);
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
+            @include dropdown-show;
+            &:hover {
+              color: $secondary-color;
+              background-color: alpha-color($light-color, 0.9);
+            }
           }
 
           li {
             a {
-              display: block;
-              padding: spacing('sm') spacing('md');
-              color: $text-secondary;
-              text-decoration: none;
+              @extend %link-base;
               @include transition($transition-fast);
-              border-left: 3px solid transparent;
-              
-              &:hover {
-                background-color: $background-color;
-                color: $primary-color;
-                border-left-color: $accent-color;
-                transform: translateX(5px);
-              }
             }
           }
         }
@@ -156,7 +131,7 @@ body {
 
   .buttons {
     @include flex-center;
-    gap: spacing('sm');
+    gap: spacing('md');
     
     @include respond-to(md) {
       width: 100%;
@@ -170,12 +145,7 @@ body {
     }
 
     .btn {
-      text-decoration: none;
-      text-align: center;
-      display: inline-block;
-      cursor: pointer;
-      border: none;
-      font-size: font-size('sm');
+      @extend %btn-base;
       @include transition($btn-transition);
     
       &.primary {
