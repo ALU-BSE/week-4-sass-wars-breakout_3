@@ -1,15 +1,180 @@
-// Colors
-$primary-color: #2c3e50;      // Deep blue
-$secondary-color: #e67e22;    // Orange
-$accent-color: #27ae60;       // Green
-$danger-color: #e74c3c;       // Red
-$background-color: #f5f6fa;   // Light gray
-$text-color: #222;
+// ===================================
+// SASS VARIABLES - STYLE WARS CHALLENGE
+// Variable Master: Complete Color & Design System
+// ===================================
 
-// Button Colors
-$btn-primary: $secondary-color;
-$btn-secondary: $accent-color;
-$btn-danger: $danger-color;
+// ===================================
+// REQUIRED COLOR PALETTE (From Design Guide)
+// ===================================
+$primary-color: #2c3e50;      // Primary - Deep blue/navy
+$accent-color: #3498db;       // Accent - Light blue  
+$light-color: #e74c3c;       // Light - Red/coral
+$danger-secondary: #34495e;   // Danger/Secondary - Dark blue-gray
 
-// Fonts
-$font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+// ===================================
+// EXTENDED COLOR SYSTEM (5+ colors required)
+// ===================================
+$success-color: #27ae60;     // Green for success states
+$warning-color: #f39c12;     // Orange for warnings
+$info-color: #3498db;        // Blue for info
+$background-color: #f8f9fa;  // Light background
+$white: #ffffff;             // Pure white
+$black: #000000;             // Pure black
+
+// ===================================
+// SEMANTIC COLOR ASSIGNMENTS
+// ===================================
+$text-primary: $primary-color;
+$text-secondary: #6c757d;
+$text-light: #ffffff;
+$text-dark: #212529;
+$text-muted: #6c757d;
+
+// ===================================
+// BUTTON COLOR VARIATIONS
+// ===================================
+$btn-primary: $primary-color;
+$btn-primary-hover: darken($primary-color, 10%);
+$btn-primary-active: darken($primary-color, 15%);
+
+$btn-secondary: $danger-secondary;
+$btn-secondary-hover: lighten($danger-secondary, 10%);
+$btn-secondary-active: darken($danger-secondary, 5%);
+
+$btn-danger: $light-color;
+$btn-danger-hover: darken($light-color, 10%);
+$btn-danger-active: darken($light-color, 15%);
+
+$btn-success: $success-color;
+$btn-warning: $warning-color;
+$btn-info: $info-color;
+
+// ===================================
+// TYPOGRAPHY SYSTEM
+// ===================================
+$font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-family-secondary: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+$font-family-monospace: 'Courier New', Courier, monospace;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Typography Scale (Mobile-first approach)
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// ===================================
+// SPACING SYSTEM
+// ===================================
+$spacer: 1rem; // Base spacing unit
+
+$spacing-xs: $spacer * 0.25;   // 4px
+$spacing-sm: $spacer * 0.5;    // 8px
+$spacing-md: $spacer;          // 16px
+$spacing-lg: $spacer * 1.5;    // 24px
+$spacing-xl: $spacer * 2;      // 32px
+$spacing-2xl: $spacer * 3;     // 48px
+$spacing-3xl: $spacer * 4;     // 64px
+
+// Specific spacing for components
+$navbar-padding-y: $spacing-md;
+$navbar-padding-x: $spacing-lg;
+$btn-padding-y: $spacing-sm;
+$btn-padding-x: $spacing-md;
+$dropdown-padding: $spacing-sm;
+
+// ===================================
+// RESPONSIVE BREAKPOINTS
+// ===================================
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// ===================================
+// COMPONENT-SPECIFIC VARIABLES
+// ===================================
+
+// Navigation
+$navbar-height: 60px;
+$navbar-brand-font-size: $font-size-xl;
+$navbar-nav-link-padding-x: $spacing-md;
+$navbar-toggler-padding: $spacing-sm;
+
+// Dropdown
+$dropdown-min-width: 200px;
+$dropdown-padding-y: $spacing-sm;
+$dropdown-spacer: 2px;
+$dropdown-border-radius: 0.375rem;
+$dropdown-box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+
+// Buttons
+$btn-border-radius: 0.375rem;
+$btn-border-width: 1px;
+$btn-font-weight: $font-weight-medium;
+$btn-line-height: $line-height-normal;
+$btn-transition: all 0.3s ease-in-out;
+
+// Transitions & Animations
+$transition-base: all 0.3s ease-in-out;
+$transition-fast: all 0.15s ease-in-out;
+$transition-slow: all 0.5s ease-in-out;
+
+// Border Radius
+$border-radius-sm: 0.25rem;
+$border-radius: 0.375rem;
+$border-radius-lg: 0.5rem;
+$border-radius-xl: 1rem;
+
+// Box Shadows
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+$box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+
+// Z-index layers
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// ===================================
+// CUSTOM THEME VARIATIONS
+// ===================================
+$theme-colors: (
+  'primary': $primary-color,
+  'secondary': $danger-secondary,
+  'success': $success-color,
+  'info': $info-color,
+  'warning': $warning-color,
+  'danger': $light-color,
+  'light': $background-color,
+  'dark': $primary-color
+);
+
+// ===================================
+// UTILITY VARIABLES
+// ===================================
+$enable-gradients: true;
+$enable-shadows: true;
+$enable-rounded: true;
+$enable-transitions: true;
