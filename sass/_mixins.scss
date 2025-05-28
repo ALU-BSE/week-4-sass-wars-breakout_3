@@ -1,3 +1,8 @@
+@use '_variables.scss' as *;
+@use '_functions.scss' as *;
+@use "sass:map";
+@use "sass:color";
+
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -19,12 +24,12 @@
   color: $color;
   border: none;
   padding: spacing(sm) spacing(md);
-  border-radius: 5px;
+  border-radius: $border-radius;
   cursor: pointer;
   @include transition($transition-slow);
 
   &:hover {
-    background-color: darken($bg, 10%);
+    background-color: color.scale($bg, $lightness: -10%);
   }
 }
 
@@ -49,7 +54,7 @@
     xl: 1280px
   );
 
-  @media (max-width: map-get($breakpoints, $breakpoint)) {
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
     @content;
   }
 }

@@ -2,12 +2,12 @@
 // This file involves the nesting of styles for the Navbar component,
 // including mixins, variables, and functions.
 
-@import '_mixins.scss';
-@import '_variables.scss';
-@import '_functions.scss';
+@use '_variables.scss' as *;
+@use '_mixins.scss' as *;
+@use '_functions.scss' as *;
 
 .navbar {
-  background-color: $white;
+  background-color: $background-color;
   box-shadow: $shadow-sm;
   position: sticky;
   top: 0;
@@ -67,7 +67,7 @@
         .dropdown-menu {
           @include dropdown-animation;
           position: absolute;
-          background-color: $white;
+          background-color: $text-light;
           min-width: 200px;
           border-radius: $border-radius;
           box-shadow: $shadow-lg;
@@ -95,9 +95,16 @@
   }
   
   .buttons {
-    @include button-style($primary-color, $white) {
-      @include flex-center;
-      gap: spacing('sm');
+    @include flex-center;
+    gap: spacing('sm');
+    .primary {
+      @include button-style($primary-color, $text-light);
+    }
+    .secondary {
+      @include button-style($text-secondary, $background-color);
+    }
+    .danger {
+      @include button-style($danger-color, $text-light);
     }
   }
 }

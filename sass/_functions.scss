@@ -1,9 +1,12 @@
+@use '_variables.scss' as *;
+@use "sass:map";
+
 @function spacing($size) {
-  @return map-get($spacings, $size);
+  @return map.get($spacings, $size);
 }
 
 @function font-size($key) {
-  @return map-get($font-sizes, $key);
+  @return map.get($font-sizes, $key);
 }
 
 @function alpha-color($color, $alpha) {
